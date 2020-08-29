@@ -4,7 +4,7 @@
   "description": "Cloning Catch-Mind with Vanilla JS, Node JS, SocketIO and Gulp",
   "main": "index.js",
   "scripts": {
-    "dev:server": "babel-node src/server.js"
+    "dev:server": "nodemon --exec babel-node src/server.js"
   },
   "repository": {
     "type": "git",
@@ -16,13 +16,18 @@
     "url": "https://github.com/crazybirdz/Guess-Mind/issues"
   },
   "homepage": "https://github.com/crazybirdz/Guess-Mind#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.7.0",
+    "nodemon": "^2.0.4"
+  },
   "dependencies": {
     "@babel/core": "^7.11.4",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.0",
     "express": "^4.17.1",
     "gulp": "^4.0.2",
-    "gulp-cli": "^2.3.0"
+    "gulp-cli": "^2.3.0",
+    "pug": "^3.0.0",
+    "socket.io": "^2.3.0"
   }
 }
