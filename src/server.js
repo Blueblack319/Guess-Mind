@@ -1,4 +1,5 @@
 import express from "express";
+import logger from "morgan";
 import path from "path";
 import socketIO from "socket.io";
 
@@ -9,6 +10,7 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use("/static", express.static(path.join(__dirname, "static")));
+app.use(logger("dev"));
 
 const handleHome = (req, res) => {
   res.render("home");
@@ -28,5 +30,5 @@ let sockets = [];
 
 io.on("connection", (socket) => {
   sockets.push(socket.id);
-  console.log("Somebody connect!");
+  socket.broadcast.emit("comeIn");
 });

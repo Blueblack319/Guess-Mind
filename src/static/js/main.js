@@ -1,2 +1,4 @@
 // eslint-disable-next-line no-undef
-io();
+const socket = io("/");
+
+socket.on("comeIn", () => console.log("Hey! friends, I just came in."));
