@@ -4,14 +4,14 @@
 
 ## To Do:
 
-- [ ] Set up
+- [x] Set up
   - [x] Server
   - [x] Pug
   - [x] Static
   - [x] Eslint
-  - [ ] SocketIO
-- [ ] Socket IO
-- [ ] Gulp
+  - [x] SocketIO
+- [x] Socket IO
+- [x] Gulp
 - [ ] Login
 - [ ] Notification and Chat
 - [ ] Live painting
