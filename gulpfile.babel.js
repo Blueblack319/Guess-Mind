@@ -1,4 +1,6 @@
 import autoprefixer from "gulp-autoprefixer";
+import babelify from "babelify";
+import bro from "gulp-bro";
 import del from "del";
 import gulp from "gulp";
 import minify from "gulp-csso";
@@ -13,12 +15,18 @@ const routes = {
     dist: "src/static/styles/",
     watch: "assets/scss/**/*.scss",
   },
+  js: {
+    src: "assets/js/*.js",
+    dist: "src/static/js/",
+    watch: "assets/js/**/*.js",
+  },
 };
 
 const clean = () => del(path.join(__dirname, "src", "static", "/", "*"));
 
 const watch = () => {
   gulp.watch(routes.style.watch, style);
+  gulp.watch(routes.js.watch, js);
 };
 
 const style = () =>
@@ -34,5 +42,18 @@ const style = () =>
     .pipe(minify())
     .pipe(gulp.dest(routes.style.dist));
 
-export const build = gulp.series([clean, style]);
-export const dev = gulp.series([clean, style, watch]);
+const js = () =>
+  gulp
+    .src(routes.js.src)
+    .pipe(
+      bro({
+        transform: [
+          babelify.configure({ presets: ["@babel/preset-env"] }),
+          ["uglifyify", { global: true }],
+        ],
+      })
+    )
+    .pipe(gulp.dest(routes.js.dist));
+
+export const build = gulp.series([clean, style, js]);
+export const dev = gulp.series([clean, style, js, watch]);
