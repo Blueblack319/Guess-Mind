@@ -1,0 +1,31 @@
+@keyframes showNotif {
+  0% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+}
+
+.notification {
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  left: 70px;
+  bottom: 100px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 20px;
+  color: white;
+  animation: showNotif 2s ease-in-out forwards;
+}
