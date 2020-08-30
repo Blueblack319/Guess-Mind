@@ -4,14 +4,18 @@
   flex-direction: column;
   align-items: center;
   canvas {
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: white;
     border-radius: 20px;
     box-shadow: $boxShadow;
   }
+  .thickness {
+    margin-top: 15px;
+    width: 200px;
+  }
   .buttons {
     width: 170px;
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     button {
