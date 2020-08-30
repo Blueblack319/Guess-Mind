@@ -1,6 +1,9 @@
 @import "./config/reset";
 @import "./config/variables";
+
+@import "./partials/chat.scss";
 @import "./partials/notifications.scss";
+
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 * {
@@ -24,6 +27,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .gameContainer {
+    width: 100%;
+  }
   .loginBox {
     width: 200px;
     height: 100px;
