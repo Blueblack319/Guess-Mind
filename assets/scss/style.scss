@@ -6,7 +6,8 @@
   box-sizing: border-box;
 }
 
-button:focus {
+button:focus,
+input:focus {
   outline: none;
 }
 
@@ -22,6 +23,23 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .loginBox {
+    width: 200px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px -20px rgba(0, 0, 0, 0.75);
+    input {
+      background-color: $greyColor;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      height: 30px;
+      border-radius: 5px;
+    }
+  }
+
   &.loggedIn {
     .loginBox {
       display: none;

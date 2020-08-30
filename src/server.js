@@ -2,6 +2,7 @@ import express from "express";
 import logger from "morgan";
 import path from "path";
 import socketIO from "socket.io";
+import socketController from "./socketController";
 
 const PORT = 4000;
 
@@ -22,14 +23,4 @@ const server = app.listen(PORT, handleListening);
 
 const io = socketIO(server);
 
-io.on("connection", (socket) => {
-  socket.on("newMessage", ({ message }) => {
-    socket.broadcast.emit("messageNotif", {
-      message,
-      nickname: socket.nickname || "Anon",
-    });
-  });
-  socket.on("setNickname", ({ nickname }) => {
-    socket.nickname = nickname;
-  });
-});
+io.on("connection", (socket) => socketController(socket));
