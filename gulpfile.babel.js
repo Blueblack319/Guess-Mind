@@ -4,7 +4,6 @@ import bro from "gulp-bro";
 import del from "del";
 import gulp from "gulp";
 import minify from "gulp-csso";
-import path from "path";
 import sass from "gulp-sass";
 
 sass.compiler = require("node-sass");
@@ -22,7 +21,7 @@ const routes = {
   },
 };
 
-const clean = () => del(path.join(__dirname, "src", "static", "/", "*"));
+const clean = () => del(["src/static/"]);
 
 const watch = () => {
   gulp.watch(routes.style.watch, style);

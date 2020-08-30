@@ -1,5 +1,35 @@
 @import "./config/reset";
+@import "./config/variables";
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+button:focus {
+  outline: none;
+}
+
+html {
+  height: 100%;
+}
 
 body {
-  background-color: antiquewhite;
+  height: 100%;
+  background-color: $greyColor;
+  font-family: "Lato", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &.loggedIn {
+    .loginBox {
+      display: none;
+    }
+  }
+  &.loggedOut {
+    .gameContainer {
+      display: none;
+    }
+  }
 }

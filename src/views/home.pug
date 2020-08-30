@@ -3,10 +3,14 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="/static/css/style.css")
+        link(rel="stylesheet", href="/static/styles/style.css")
         title Guess Mind
     body
-        h1 Hello
+        .loginBox
+            form#js-loginForm
+                input(type="text", placeholder="What's your nickname")
+        .gameContainer#js-gameContainer
+            h1 You are logged in
 
         script(src="/socket.io/socket.io.js")
         script(src="/static/js/main.js")
