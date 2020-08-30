@@ -10,6 +10,21 @@ html(lang="en")
             form#js-loginForm
                 input(type="text", placeholder="What's your nickname?")
         .gameContainer#js-gameContainer
+            .paintingBoard
+                canvas(width=750, height=550)
+                .buttons
+                    button#js-changeMode paint
+                    button#js-save save
+                .colors
+                    button.color#js-color
+                    button.color#js-color
+                    button.color#js-color
+                    button.color#js-color
+                    button.color#js-color
+                    button.color#js-color
+                    button.color#js-color
+                    button.color#js-color
+                    button.color#js-color
             .chat
                 ul.messages#js-messages
                 form.sendMsg#js-sendMsgForm
