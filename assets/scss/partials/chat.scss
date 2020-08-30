@@ -1,3 +1,5 @@
+@import "../config/variables";
+
 .chat {
   width: 100%;
   display: flex;
@@ -7,9 +9,22 @@
     width: 20%;
     height: 60vh;
     margin-bottom: 20px;
+    padding: 20px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 10px 52px -35px rgba(0, 0, 0, 0.75);
+    li {
+      span {
+        font-weight: 600;
+        font-size: 17px;
+      }
+      .self {
+        color: $black;
+      }
+      .others {
+        color: $orange;
+      }
+    }
   }
   .sendMsg {
     width: 20%;
@@ -17,7 +32,7 @@
     flex-direction: column;
     align-items: center;
     input {
-      width: 80%;
+      width: 90%;
       height: 30px;
       border: 1px solid rgba(0, 0, 0, 0.25);
       border-radius: 5px;
