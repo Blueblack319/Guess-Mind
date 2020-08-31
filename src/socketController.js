@@ -50,10 +50,17 @@ const socketController = (socket, io) => {
     sendPlayerUpdate();
   });
   socket.on(events.sendMsg, ({ message }) => {
-    broadcast(events.newMsg, {
-      message,
-      nickname: socket.nickname,
-    });
+    if (message === word) {
+      superBroadcast(events.newMsg, {
+        message: `Winner is ${socket.nickname}, word was ${word}!!`,
+        nickname: "Bot",
+      });
+    } else {
+      broadcast(events.newMsg, {
+        message,
+        nickname: socket.nickname,
+      });
+    }
   });
   socket.on(events.beginPath, ({ x, y }) =>
     broadcast(events.beganPath, { x, y })
