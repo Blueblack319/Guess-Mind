@@ -1,5 +1,4 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-<<<<<<< HEAD
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.handleNewMsg=void 0;var _sockets=require("./sockets"),sendMsgForm=document.getElementById("js-sendMsgForm"),messages=document.getElementById("js-messages"),appendMsg=function(e,s){var n=document.createElement("li");n.innerHTML='\n    <span class="author '.concat(s?"others":"self",'">\n    ').concat(s||"You",":\n    </span>").concat(e,"\n    "),messages.appendChild(n)},handleNewMsg=function(e){var s=e.message,n=e.nickname;return appendMsg(s,n)};exports.handleNewMsg=handleNewMsg;var handleSubmit=function(e){e.preventDefault();var s=sendMsgForm.querySelector("input"),n=s.value;(0,_sockets.getSocket)().emit(window.events.sendMsg,{message:n}),s.value="",appendMsg(n)};sendMsgForm&&sendMsgForm.addEventListener("submit",handleSubmit);
 
 },{"./sockets":3}],2:[function(require,module,exports){
@@ -9,8 +8,3 @@
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.initSocket=exports.updateSocket=exports.getSocket=void 0;var _notificatoins=require("./notificatoins"),_chat=require("./chat"),socket=null,getSocket=function(){return socket};exports.getSocket=getSocket;var updateSocket=function(e){return socket=e};exports.updateSocket=updateSocket;var initSocket=function(e){var t=window.events;updateSocket(e),socket.on(t.newUser,_notificatoins.handleNewUser),socket.on(t.disconnected,_notificatoins.handleDisconnected),socket.on(t.newMsg,_chat.handleNewMsg)};exports.initSocket=initSocket;
 
 },{"./chat":1,"./notificatoins":2}]},{},[1]);
-=======
-"use strict";var sendMsgForm=document.getElementById("js-sendMsgForm"),messages=document.getElementById("js-messages"),appendMsg=function(e,n){var s=document.createElement("li");s.innerHTML='\n    <span class="author '.concat(n?"others":"self",'">\n    ').concat(n||"You",":\n    </span>").concat(e,"\n    "),messages.appendChild(s)},handleSubmit=function(e){e.preventDefault();var n=sendMsgForm.querySelector("input"),s=n.value;n.value="",appendMsg(s)};sendMsgForm&&sendMsgForm.addEventListener("submit",handleSubmit);
-
-},{}]},{},[1]);
->>>>>>> f961731b3258b433560ec2bf63b6ba6bf3a18961

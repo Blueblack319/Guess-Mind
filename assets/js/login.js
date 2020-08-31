@@ -16,7 +16,7 @@ const login = (nickname) => {
   initSocket(socket);
 };
 
-if (nickname === null) {
+if (nickname == null) {
   body.className = LOGGED_OUT;
 } else {
   body.className = LOGGED_IN;

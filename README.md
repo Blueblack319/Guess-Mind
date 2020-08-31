@@ -12,6 +12,12 @@
   - [x] SocketIO
 - [x] Socket IO
 - [x] Gulp
-- [ ] Login
-- [ ] Notification and Chat
+- [x] Login
+- [x] Notification and Chat
+- [x] Painting Board
+  - [x] Events
+  - [x] Thickness
+  - [x] Fill / Paint
+  - [x] Change colors
+  - [x] Save
 - [ ] Live painting

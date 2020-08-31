@@ -38,6 +38,7 @@
       height: 50px;
       border-radius: 50%;
       border: none;
+      box-shadow: $boxShadow;
       &:first-child {
         background-color: black;
       }
