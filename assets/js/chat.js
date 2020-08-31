@@ -20,12 +20,13 @@ const handleSubmit = (event) => {
   event.preventDefault();
   const input = sendMsgForm.querySelector("input");
   const { value } = input;
-
   getSocket().emit(window.events.sendMsg, { message: value });
-
   input.value = "";
   appendMsg(value);
 };
+
+export const disableChat = () => (sendMsgForm.style.display = "none");
+export const enableChat = () => (sendMsgForm.style.display = "flex");
 
 if (sendMsgForm) {
   sendMsgForm.addEventListener("submit", handleSubmit);

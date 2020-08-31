@@ -18,10 +18,11 @@ const socketController = (socket, io) => {
       inProgress = true;
       leader = chooseLeader();
       word = chooseWord();
+      superBroadcast(events.gameStarting);
       setTimeout(() => {
         superBroadcast(events.gameStarted);
         io.to(leader.id).emit(events.leaderNotif, { word });
-      }, 2000);
+      }, 5000);
     }
   };
   const endGame = () => {
