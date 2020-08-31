@@ -91,6 +91,8 @@ const saveFile = () => {
   downloadLink.click();
 };
 
+export const resetCanvas = () => filled("#fff");
+
 export const enableCanvas = () => {
   canvas.addEventListener("mousedown", startPainting);
   canvas.addEventListener("mouseup", stopPainting);

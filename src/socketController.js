@@ -14,7 +14,7 @@ const socketController = (socket, io) => {
   const sendPlayerUpdate = () =>
     superBroadcast(events.playerUpdate, { sockets });
   const startGame = () => {
-    if (sockets.length >= 2) {
+    if (inProgress === false) {
       inProgress = true;
       leader = chooseLeader();
       word = chooseWord();
@@ -25,8 +25,8 @@ const socketController = (socket, io) => {
     }
   };
   const endGame = () => {
-    if ((sockets.lenght = 1 || inProgress == false)) {
-    }
+    inProgress = false;
+    superBroadcast(events.gameEnded);
   };
 
   socket.on(events.setNickname, ({ nickname }) => {
@@ -37,9 +37,15 @@ const socketController = (socket, io) => {
     startGame();
   });
   socket.on(events.disconnect, () => {
-    endGame();
     broadcast(events.disconnected, { nickname: socket.nickname });
     sockets = sockets.filter((aSocket) => aSocket.id !== socket.id);
+    if (sockets.length === 1) {
+      endGame();
+    } else if (leader) {
+      if (socket.id === leader.id) {
+        endGame();
+      }
+    }
     sendPlayerUpdate();
   });
   socket.on(events.sendMsg, ({ message }) => {

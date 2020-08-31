@@ -3,6 +3,7 @@ import {
   hideControls,
   enableCanvas,
   showControls,
+  resetCanvas,
 } from "./paint";
 
 const players = document.getElementById("js-players");
@@ -28,7 +29,14 @@ export const handleGameStarted = () => {
 };
 
 export const handleLeaderNotif = ({ word }) => {
-  setNotif(word);
+  setNotif(`You are the leader. Paint: ${word}`);
   enableCanvas();
   showControls();
+};
+
+export const handleGameEnded = () => {
+  setNotif("Game ended");
+  disableCanvas();
+  hideControls();
+  resetCanvas();
 };
