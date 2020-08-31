@@ -22,3 +22,4 @@
   - [x] Save
 - [ ] Live painting
   - [x] Share painting
+  - [x] Share color

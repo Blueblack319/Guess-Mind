@@ -9,6 +9,8 @@ const events = {
   beginStroke: "beginStroke",
   beganPath: "beganPath",
   beganStroke: "beganStroke",
+  fill: "fill",
+  filled: "filled",
 };
 
 export default events;

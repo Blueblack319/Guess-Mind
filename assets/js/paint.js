@@ -12,9 +12,6 @@ let thickness = 1;
 let color = "black";
 let mode = "PAINT";
 
-canvas.width = 750;
-canvas.height = 550;
-
 const startPainting = () => {
   paint = true;
 };
@@ -28,21 +25,26 @@ const beganPath = (x, y) => {
   ctx.moveTo(x, y);
 };
 
-const beganStroke = (x, y) => {
+const beganStroke = (x, y, color = null) => {
+  const currentColor = ctx.strokeStyle;
+  if (color !== null) {
+    ctx.strokeStyle = color;
+  }
   ctx.lineTo(x, y);
   ctx.stroke();
+  ctx.strokeStyle = currentColor;
 };
 
 const painting = (event) => {
   const x = event.offsetX;
   const y = event.offsetY;
-  ctx.strokeStyle = color;
+
   if (paint !== true) {
     beganPath(x, y);
     getSocket().emit(window.events.beginPath, { x, y });
   } else {
     beganStroke(x, y);
-    getSocket().emit(window.events.beginStroke, { x, y });
+    getSocket().emit(window.events.beginStroke, { x, y, color });
   }
 };
 
@@ -54,12 +56,21 @@ const changeThickness = (event) => {
 const changeColor = (event) => {
   const colorBtn = event.target;
   color = window.getComputedStyle(colorBtn).backgroundColor;
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+};
+
+const filled = (broadColor = null) => {
+  if (broadColor !== null) {
+    ctx.fillStyle = broadColor;
+  }
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
 const changeBoardColor = () => {
   if (mode === "FILL") {
-    ctx.fillStyle = color;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    getSocket().emit(window.events.fill, { color });
+    filled();
   }
 };
 
@@ -94,4 +105,5 @@ if (canvas) {
 }
 
 export const handleBeganPath = ({ x, y }) => beganPath(x, y);
-export const handleBeganStroke = ({ x, y }) => beganStroke(x, y);
+export const handleBeganStroke = ({ x, y, color }) => beganStroke(x, y, color);
+export const handleFilled = ({ color }) => filled(color);
