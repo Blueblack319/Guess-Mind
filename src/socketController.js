@@ -14,6 +14,12 @@ const socketController = (socket) => {
       nickname: socket.nickname,
     });
   });
+  socket.on(events.beginPath, ({ x, y }) =>
+    socket.broadcast.emit(events.beganPath, { x, y })
+  );
+  socket.on(events.beginStroke, ({ x, y }) =>
+    socket.broadcast.emit(events.beganStroke, { x, y })
+  );
 };
 
 export default socketController;

@@ -21,3 +21,4 @@
   - [x] Change colors
   - [x] Save
 - [ ] Live painting
+  - [x] Share painting

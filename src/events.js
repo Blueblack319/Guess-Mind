@@ -5,6 +5,10 @@ const events = {
   disconnected: "disconnected",
   sendMsg: "sendMsg",
   newMsg: "newMsg",
+  beginPath: "beginPath",
+  beginStroke: "beginStroke",
+  beganPath: "beganPath",
+  beganStroke: "beganStroke",
 };
 
 export default events;

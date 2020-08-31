@@ -1,3 +1,5 @@
+import { getSocket } from "./sockets";
+
 const canvas = document.getElementById("js-canvas");
 const ctx = canvas.getContext("2d");
 const range = document.getElementById("js-thickness");
@@ -21,16 +23,26 @@ const stopPainting = () => {
   paint = false;
 };
 
+const beganPath = (x, y) => {
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+};
+
+const beganStroke = (x, y) => {
+  ctx.lineTo(x, y);
+  ctx.stroke();
+};
+
 const painting = (event) => {
   const x = event.offsetX;
   const y = event.offsetY;
   ctx.strokeStyle = color;
   if (paint !== true) {
-    ctx.beginPath();
-    ctx.moveTo(x, y);
+    beganPath(x, y);
+    getSocket().emit(window.events.beginPath, { x, y });
   } else {
-    ctx.lineTo(x, y);
-    ctx.stroke();
+    beganStroke(x, y);
+    getSocket().emit(window.events.beginStroke, { x, y });
   }
 };
 
@@ -80,3 +92,6 @@ if (canvas) {
   modeBtn.addEventListener("click", changeMode);
   saveBtn.addEventListener("click", saveFile);
 }
+
+export const handleBeganPath = ({ x, y }) => beganPath(x, y);
+export const handleBeganStroke = ({ x, y }) => beganStroke(x, y);
