@@ -9,62 +9,40 @@
     border-radius: 20px;
     box-shadow: $boxShadow;
   }
-  .thickness {
-    margin-top: 15px;
-    width: 200px;
-  }
-  .buttons {
-    width: 170px;
-    margin-top: 10px;
+  .controls {
     display: flex;
-    justify-content: space-between;
-    button {
-      text-transform: uppercase;
-      font-weight: 600;
-      color: $black;
-      width: 75px;
-      height: 35px;
-      background-color: white;
-      border: 1px solid rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
-      cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    .thickness {
+      margin-top: 15px;
+      width: 200px;
     }
-  }
-  .colors {
-    margin-top: 20px;
-    button {
-      cursor: pointer;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: none;
-      box-shadow: $boxShadow;
-      &:first-child {
-        background-color: black;
-      }
-      &:nth-child(2) {
+    .buttons {
+      width: 170px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      button {
+        text-transform: uppercase;
+        font-weight: 600;
+        color: $black;
+        width: 75px;
+        height: 35px;
         background-color: white;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        cursor: pointer;
       }
-      &:nth-child(3) {
-        background-color: rgb(255, 59, 48);
-      }
-      &:nth-child(4) {
-        background-color: rgb(255, 149, 0);
-      }
-      &:nth-child(5) {
-        background-color: rgb(255, 204, 0);
-      }
-      &:nth-child(6) {
-        background-color: rgb(76, 217, 100);
-      }
-      &:nth-child(7) {
-        background-color: rgb(90, 200, 250);
-      }
-      &:nth-child(8) {
-        background-color: rgb(0, 122, 255);
-      }
-      &:last-child {
-        background-color: rgb(88, 86, 214);
+    }
+    .colors {
+      margin-top: 10px;
+      button {
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        box-shadow: $boxShadow;
       }
     }
   }

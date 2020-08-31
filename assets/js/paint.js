@@ -6,6 +6,7 @@ const range = document.getElementById("js-thickness");
 const colors = document.querySelectorAll("#js-color");
 const modeBtn = document.getElementById("js-changeMode");
 const saveBtn = document.getElementById("js-save");
+const controls = document.getElementById("js-controls");
 
 let paint = false;
 let thickness = 1;
@@ -55,7 +56,7 @@ const changeThickness = (event) => {
 
 const changeColor = (event) => {
   const colorBtn = event.target;
-  color = window.getComputedStyle(colorBtn).backgroundColor;
+  color = colorBtn.style.backgroundColor;
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
 };
@@ -90,12 +91,36 @@ const saveFile = () => {
   downloadLink.click();
 };
 
-if (canvas) {
+export const enableCanvas = () => {
   canvas.addEventListener("mousedown", startPainting);
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
   canvas.addEventListener("mousemove", painting);
   canvas.addEventListener("click", changeBoardColor);
+};
+
+export const disableCanvas = () => {
+  canvas.removeEventListener("mousedown", startPainting);
+  canvas.removeEventListener("mouseup", stopPainting);
+  canvas.removeEventListener("mouseleave", stopPainting);
+  canvas.removeEventListener("mousemove", painting);
+  canvas.removeEventListener("click", changeBoardColor);
+};
+
+export const hideControls = () => {
+  controls.style.display = "none";
+};
+
+export const showControls = () => {
+  controls.style.display = "flex";
+};
+
+export const handleBeganPath = ({ x, y }) => beganPath(x, y);
+export const handleBeganStroke = ({ x, y, color }) => beganStroke(x, y, color);
+export const handleFilled = ({ color }) => filled(color);
+
+if (canvas) {
+  enableCanvas();
   range.addEventListener("input", changeThickness);
   colors.forEach((color) => {
     color.addEventListener("click", changeColor);
@@ -103,7 +128,3 @@ if (canvas) {
   modeBtn.addEventListener("click", changeMode);
   saveBtn.addEventListener("click", saveFile);
 }
-
-export const handleBeganPath = ({ x, y }) => beganPath(x, y);
-export const handleBeganStroke = ({ x, y, color }) => beganStroke(x, y, color);
-export const handleFilled = ({ color }) => filled(color);
