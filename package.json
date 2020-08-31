@@ -36,6 +36,8 @@
     "gulp-cli": "^2.3.0",
     "gulp-csso": "^4.0.1",
     "gulp-sass": "^4.1.0",
+    "jsdom": "^16.4.0",
+    "mocha-jsdom": "^2.0.0",
     "morgan": "^1.10.0",
     "node-sass": "^4.14.1",
     "pug": "^3.0.0",

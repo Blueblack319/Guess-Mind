@@ -1,5 +1,6 @@
 import events from "./events";
 import { chooseWord } from "../assets/js/word";
+import { showTimer, clearTimer } from "../assets/js/timer";
 
 let sockets = [];
 let inProgress = false;
@@ -20,20 +21,26 @@ const socketController = (socket, io) => {
       leader = chooseLeader();
       word = chooseWord();
       superBroadcast(events.gameStarting);
+      showTimer(5);
       setTimeout(() => {
+        clearTimer();
         superBroadcast(events.gameStarted);
         io.to(leader.id).emit(events.leaderNotif, { word });
-        timeout = setTimeout(endGame, 10000);
-      }, 5000);
+        showTimer(30);
+        timeout = setTimeout(endGame, 30500);
+      }, 5500);
     }
   };
   const endGame = () => {
     inProgress = false;
     superBroadcast(events.gameEnded);
+    clearTimer();
     if (timeout !== null) {
       clearTimeout(timeout);
     }
-    setTimeout(() => startGame(), 2000);
+    if (sockets.length > 1) {
+      setTimeout(() => startGame(), 2000);
+    }
   };
   const addPoint = (id) => {
     clearTimeout(timeout);

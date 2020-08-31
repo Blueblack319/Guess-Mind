@@ -20,6 +20,8 @@
   - [x] Fill / Paint
   - [x] Change colors
   - [x] Save
-- [ ] Live painting
+- [x] Live painting
   - [x] Share painting
   - [x] Share color
+  - [x] Set timeout
+  - [ ] Show rest time
