@@ -29,6 +29,15 @@ const socketController = (socket, io) => {
     inProgress = false;
     superBroadcast(events.gameEnded);
   };
+  const addPoint = (id) => {
+    sockets = sockets.map((socket) => {
+      if (socket.id === id) {
+        socket.score += 10;
+      }
+      return socket;
+    });
+    sendPlayerUpdate();
+  };
 
   socket.on(events.setNickname, ({ nickname }) => {
     socket.nickname = nickname;
@@ -55,6 +64,8 @@ const socketController = (socket, io) => {
         message: `Winner is ${socket.nickname}, word was ${word}!!`,
         nickname: "Bot",
       });
+      addPoint(socket.id);
+      endGame();
     } else {
       broadcast(events.newMsg, {
         message,
