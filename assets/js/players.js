@@ -5,7 +5,7 @@ import {
   showControls,
   resetCanvas,
 } from "./paint";
-import { disableChat } from "./chat";
+import { disableChat, enableChat } from "./chat";
 
 const players = document.getElementById("js-players");
 const notifs = document.getElementById("js-notifs");
@@ -25,6 +25,7 @@ const setNotif = (text = "") => {
 
 export const handleGameStarted = () => {
   setNotif();
+  enableChat();
   disableCanvas();
   hideControls();
 };
@@ -38,6 +39,7 @@ export const handleLeaderNotif = ({ word }) => {
 
 export const handleGameEnded = () => {
   setNotif("Game ended");
+  enableChat();
   disableCanvas();
   hideControls();
   resetCanvas();
