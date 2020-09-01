@@ -1,22 +1,24 @@
 const timer = document.getElementById("js-timer");
 
-let limit = 1;
+let limit = null;
 let timerout;
-let countdown;
 
-countdown = (time) => {
-  if (limit === 1) {
+const countdown = (time) => {
+  if (limit === null) {
     limit = time;
   } else {
     limit -= 1;
   }
-  timer.innerHTML = limit;
+  timer.innerText = limit.toString();
 };
 
-export const showTimer = (time) =>
-  (timerout = setInterval(() => countdown(time), 1000));
+export const handleShowTimer = ({ time }) => {
+  timerout = setInterval(() => {
+    countdown(time);
+  }, 1000);
+};
 
-export const clearTimer = () => {
-  limit = 1;
+export const handleClearTimer = () => {
   clearInterval(timerout);
+  limit = null;
 };

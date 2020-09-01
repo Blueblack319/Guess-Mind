@@ -16,6 +16,8 @@ const events = {
   gameStarted: "gameStarted",
   gameEnded: "gameEnded",
   gameStarting: "gameStarting",
+  showTimer: "showTimer",
+  clearTimer: "clearTimer",
 };
 
 export default events;
