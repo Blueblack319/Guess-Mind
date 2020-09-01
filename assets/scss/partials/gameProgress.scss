@@ -1,20 +1,25 @@
+@import "../partials/box";
+
 .gameProgress {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: flex-start;
+  .timer {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    @include block("rect");
+    &.emergency {
+      color: red;
+    }
+  }
   .players {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     div {
-      width: 140px;
-      height: 40px;
-      text-align: center;
-      line-height: 40px;
-      background-color: white;
-      border-radius: 20px;
-      box-shadow: $boxShadow;
-      margin-bottom: 15px;
+      @include block("round");
     }
   }
 }

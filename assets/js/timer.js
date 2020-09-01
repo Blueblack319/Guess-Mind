@@ -6,9 +6,14 @@ let timerout;
 const countdown = (time) => {
   if (limit === null) {
     limit = time;
+    timer.classList.remove("emergency");
   } else {
     limit -= 1;
+    if (limit <= 2) {
+      timer.classList.add("emergency");
+    }
   }
+
   timer.innerText = limit.toString();
 };
 

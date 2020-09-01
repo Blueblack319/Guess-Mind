@@ -1,0 +1,14 @@
+@import "../config/variables";
+
+@mixin block($mode) {
+  @if $mode == "round" {
+    border-radius: 20px;
+  }
+  width: 140px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background-color: white;
+  box-shadow: $boxShadow;
+  margin-bottom: 15px;
+}
