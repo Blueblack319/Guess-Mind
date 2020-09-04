@@ -23,10 +23,10 @@ const socketController = (socket, io) => {
       superBroadcast(events.showTimer, { time: 5 });
       setTimeout(() => {
         superBroadcast(events.clearTimer);
-        superBroadcast(events.showTimer, { time: 10 });
+        superBroadcast(events.showTimer, { time: 30 });
         superBroadcast(events.gameStarted);
         io.to(leader.id).emit(events.leaderNotif, { word });
-        timeout = setTimeout(endGame, 11500);
+        timeout = setTimeout(endGame, 31500);
       }, 6550);
     }
   };
